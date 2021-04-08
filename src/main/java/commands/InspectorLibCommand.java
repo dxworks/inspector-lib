@@ -15,7 +15,7 @@ public interface InspectorLibCommand {
         boolean result = Files.exists(path) && (Files.isRegularFile(path) || Files.isDirectory(path));
 
         if (!result)
-            System.out.println("Could not find path " + path.toAbsolutePath().toString());
+            System.err.println("Could not find path " + path.toAbsolutePath().toString());
 
         return result;
     }

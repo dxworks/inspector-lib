@@ -42,7 +42,7 @@ public class DependencyService {
     private List<Dependency> getDependenciesFromFile(Path ruleFilePath) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(ruleFilePath.toFile(), new TypeReference<List<Dependency>>() {
+            return objectMapper.readValue(ruleFilePath.toFile(), new TypeReference<>() {
             });
         } catch (IOException e) {
             System.err.println(e + "Could not read dependency file!");

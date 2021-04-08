@@ -80,532 +80,492 @@
   "url" : "https://mvnrepository.com/artifact/junit/junit/4.12"
 }, {
   "name" : "@npmcli/arborist",
-  "version" : "^2.1.0",
+  "version" : "2.1.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/@npmcli/arborist"
 }, {
   "name" : "@npmcli/ci-detect",
-  "version" : "^1.2.0",
+  "version" : "1.2.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/@npmcli/ci-detect"
 }, {
   "name" : "@npmcli/config",
-  "version" : "^1.2.8",
+  "version" : "1.2.8",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/@npmcli/config"
 }, {
   "name" : "@npmcli/run-script",
-  "version" : "^1.8.1",
+  "version" : "1.8.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/@npmcli/run-script"
 }, {
   "name" : "abbrev",
-  "version" : "~1.1.1",
+  "version" : "1.1.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/abbrev"
 }, {
   "name" : "ansicolors",
-  "version" : "~0.3.2",
+  "version" : "0.3.2",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/ansicolors"
 }, {
   "name" : "ansistyles",
-  "version" : "~0.1.3",
+  "version" : "0.1.3",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/ansistyles"
 }, {
   "name" : "aproba",
-  "version" : "^2.0.0",
+  "version" : "2.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/aproba"
 }, {
   "name" : "archy",
-  "version" : "~1.0.0",
+  "version" : "1.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/archy"
 }, {
   "name" : "byte-size",
-  "version" : "^7.0.0",
+  "version" : "7.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/byte-size"
 }, {
   "name" : "cacache",
-  "version" : "^15.0.5",
+  "version" : "15.0.5",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/cacache"
 }, {
   "name" : "chalk",
-  "version" : "^4.1.0",
+  "version" : "4.1.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/chalk"
 }, {
   "name" : "chownr",
-  "version" : "^2.0.0",
+  "version" : "2.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/chownr"
 }, {
   "name" : "cli-columns",
-  "version" : "^3.1.2",
+  "version" : "3.1.2",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/cli-columns"
 }, {
   "name" : "cli-table3",
-  "version" : "^0.6.0",
+  "version" : "0.6.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/cli-table3"
 }, {
   "name" : "columnify",
-  "version" : "~1.5.4",
+  "version" : "1.5.4",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/columnify"
 }, {
   "name" : "glob",
-  "version" : "^7.1.4",
+  "version" : "7.1.4",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/glob"
 }, {
   "name" : "graceful-fs",
-  "version" : "^4.2.3",
+  "version" : "4.2.3",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/graceful-fs"
 }, {
   "name" : "hosted-git-info",
-  "version" : "^3.0.8",
+  "version" : "3.0.8",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/hosted-git-info"
 }, {
   "name" : "ini",
-  "version" : "^2.0.0",
+  "version" : "2.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/ini"
 }, {
   "name" : "init-package-json",
-  "version" : "^2.0.1",
+  "version" : "2.0.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/init-package-json"
 }, {
   "name" : "is-cidr",
-  "version" : "^4.0.2",
+  "version" : "4.0.2",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/is-cidr"
 }, {
   "name" : "json-parse-even-better-errors",
-  "version" : "^2.3.1",
+  "version" : "2.3.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/json-parse-even-better-errors"
 }, {
   "name" : "leven",
-  "version" : "^3.1.0",
+  "version" : "3.1.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/leven"
 }, {
   "name" : "libnpmaccess",
-  "version" : "^4.0.1",
+  "version" : "4.0.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/libnpmaccess"
 }, {
   "name" : "libnpmdiff",
-  "version" : "^2.0.3",
+  "version" : "2.0.3",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/libnpmdiff"
 }, {
   "name" : "libnpmfund",
-  "version" : "^1.0.2",
+  "version" : "1.0.2",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/libnpmfund"
 }, {
   "name" : "libnpmhook",
-  "version" : "^6.0.1",
+  "version" : "6.0.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/libnpmhook"
 }, {
   "name" : "libnpmorg",
-  "version" : "^2.0.1",
+  "version" : "2.0.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/libnpmorg"
 }, {
   "name" : "libnpmpack",
-  "version" : "^2.0.0",
+  "version" : "2.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/libnpmpack"
 }, {
   "name" : "libnpmpublish",
-  "version" : "^4.0.0",
+  "version" : "4.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/libnpmpublish"
 }, {
   "name" : "libnpmsearch",
-  "version" : "^3.1.0",
+  "version" : "3.1.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/libnpmsearch"
 }, {
   "name" : "libnpmteam",
-  "version" : "^2.0.2",
+  "version" : "2.0.2",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/libnpmteam"
 }, {
   "name" : "libnpmversion",
-  "version" : "^1.0.7",
+  "version" : "1.0.7",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/libnpmversion"
 }, {
   "name" : "make-fetch-happen",
-  "version" : "^8.0.13",
+  "version" : "8.0.13",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/make-fetch-happen"
 }, {
   "name" : "minipass",
-  "version" : "^3.1.3",
+  "version" : "3.1.3",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/minipass"
 }, {
   "name" : "minipass-pipeline",
-  "version" : "^1.2.4",
+  "version" : "1.2.4",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/minipass-pipeline"
 }, {
   "name" : "mkdirp",
-  "version" : "^1.0.4",
+  "version" : "1.0.4",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/mkdirp"
 }, {
   "name" : "mkdirp-infer-owner",
-  "version" : "^2.0.0",
+  "version" : "2.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/mkdirp-infer-owner"
 }, {
   "name" : "ms",
-  "version" : "^2.1.2",
+  "version" : "2.1.2",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/ms"
 }, {
   "name" : "node-gyp",
-  "version" : "^7.1.2",
+  "version" : "7.1.2",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/node-gyp"
 }, {
   "name" : "nopt",
-  "version" : "^5.0.0",
+  "version" : "5.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/nopt"
 }, {
   "name" : "npm-audit-report",
-  "version" : "^2.1.4",
+  "version" : "2.1.4",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/npm-audit-report"
 }, {
   "name" : "npm-package-arg",
-  "version" : "^8.1.0",
+  "version" : "8.1.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/npm-package-arg"
 }, {
   "name" : "npm-pick-manifest",
-  "version" : "^6.1.0",
+  "version" : "6.1.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/npm-pick-manifest"
 }, {
   "name" : "npm-profile",
-  "version" : "^5.0.2",
+  "version" : "5.0.2",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/npm-profile"
 }, {
   "name" : "npm-registry-fetch",
-  "version" : "^9.0.0",
+  "version" : "9.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/npm-registry-fetch"
 }, {
   "name" : "npm-user-validate",
-  "version" : "^1.0.1",
+  "version" : "1.0.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/npm-user-validate"
 }, {
   "name" : "npmlog",
-  "version" : "~4.1.2",
+  "version" : "4.1.2",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/npmlog"
 }, {
   "name" : "opener",
-  "version" : "^1.5.2",
+  "version" : "1.5.2",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/opener"
 }, {
   "name" : "pacote",
-  "version" : "^11.2.3",
+  "version" : "11.2.3",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/pacote"
 }, {
   "name" : "parse-conflict-json",
-  "version" : "^1.1.1",
+  "version" : "1.1.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/parse-conflict-json"
 }, {
   "name" : "qrcode-terminal",
-  "version" : "^0.12.0",
+  "version" : "0.12.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/qrcode-terminal"
 }, {
   "name" : "read",
-  "version" : "~1.0.7",
+  "version" : "1.0.7",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/read"
 }, {
   "name" : "read-package-json",
-  "version" : "^3.0.0",
+  "version" : "3.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/read-package-json"
 }, {
   "name" : "read-package-json-fast",
-  "version" : "^1.2.1",
+  "version" : "1.2.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/read-package-json-fast"
 }, {
   "name" : "readdir-scoped-modules",
-  "version" : "^1.1.0",
+  "version" : "1.1.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/readdir-scoped-modules"
 }, {
   "name" : "rimraf",
-  "version" : "^3.0.2",
+  "version" : "3.0.2",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/rimraf"
 }, {
   "name" : "semver",
-  "version" : "^7.3.4",
+  "version" : "7.3.4",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/semver"
 }, {
   "name" : "ssri",
-  "version" : "^8.0.1",
+  "version" : "8.0.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/ssri"
 }, {
   "name" : "tar",
-  "version" : "^6.1.0",
+  "version" : "6.1.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/tar"
 }, {
   "name" : "text-table",
-  "version" : "~0.2.0",
+  "version" : "0.2.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/text-table"
 }, {
   "name" : "tiny-relative-date",
-  "version" : "^1.3.0",
+  "version" : "1.3.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/tiny-relative-date"
 }, {
   "name" : "treeverse",
-  "version" : "^1.0.4",
+  "version" : "1.0.4",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/treeverse"
 }, {
   "name" : "uuid",
-  "version" : "^8.3.1",
+  "version" : "8.3.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/uuid"
 }, {
   "name" : "validate-npm-package-name",
-  "version" : "~3.0.0",
+  "version" : "3.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/validate-npm-package-name"
 }, {
   "name" : "which",
-  "version" : "^2.0.2",
+  "version" : "2.0.2",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/which"
 }, {
   "name" : "write-file-atomic",
-  "version" : "^3.0.3",
+  "version" : "3.0.3",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/write-file-atomic"
 }, {
   "name" : "cmark-gfm",
-  "version" : "^0.8.5",
+  "version" : "0.8.5",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/cmark-gfm"
 }, {
   "name" : "eslint",
-  "version" : "^7.18.0",
+  "version" : "7.18.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/eslint"
 }, {
   "name" : "eslint-plugin-import",
-  "version" : "^2.22.1",
+  "version" : "2.22.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/eslint-plugin-import"
 }, {
   "name" : "eslint-plugin-node",
-  "version" : "^11.1.0",
+  "version" : "11.1.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/eslint-plugin-node"
 }, {
   "name" : "eslint-plugin-promise",
-  "version" : "^4.2.1",
+  "version" : "4.2.1",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/eslint-plugin-promise"
 }, {
   "name" : "eslint-plugin-standard",
-  "version" : "^5.0.0",
+  "version" : "5.0.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/eslint-plugin-standard"
 }, {
   "name" : "jsdom",
-  "version" : "^16.4.0",
+  "version" : "16.4.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/jsdom"
 }, {
   "name" : "marked-man",
-  "version" : "^0.7.0",
+  "version" : "0.7.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/marked-man"
 }, {
   "name" : "require-inject",
-  "version" : "^1.4.4",
+  "version" : "1.4.4",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/require-inject"
 }, {
   "name" : "tap",
-  "version" : "^14.11.0",
+  "version" : "14.11.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/tap"
 }, {
   "name" : "yaml",
-  "version" : "^1.10.0",
+  "version" : "1.10.0",
   "provider" : "npm",
   "url" : "https://www.npmjs.com/package/yaml"
 }, {
-  "name" : "sphinx",
-  "version" : "",
-  "provider" : "pypi",
-  "url" : "https://pypi.org/project/sphinx"
-}, {
-  "name" : "sphinx_rtd_theme",
-  "version" : "",
-  "provider" : "pypi",
-  "url" : "https://pypi.org/project/sphinx_rtd_theme"
-}, {
-  "name" : "sphinxcontrib.apidoc",
-  "version" : "",
-  "provider" : "pypi",
-  "url" : "https://pypi.org/project/sphinxcontrib.apidoc"
-}, {
-  "name" : "nbsphinx",
-  "version" : "",
-  "provider" : "pypi",
-  "url" : "https://pypi.org/project/nbsphinx"
-}, {
-  "name" : "nbsphinx_link",
-  "version" : "",
-  "provider" : "pypi",
-  "url" : "https://pypi.org/project/nbsphinx_link"
-}, {
-  "name" : "recommonmark",
-  "version" : "",
-  "provider" : "pypi",
-  "url" : "https://pypi.org/project/recommonmark"
-}, {
-  "name" : "sphinx_markdown_tables",
-  "version" : "",
-  "provider" : "pypi",
-  "url" : "https://pypi.org/project/sphinx_markdown_tables"
-}, {
-  "name" : "ipykernel",
-  "version" : "",
-  "provider" : "pypi",
-  "url" : "https://pypi.org/project/ipykernel"
-}, {
   "name" : "numpy",
-  "version" : ">=1.16.4",
+  "version" : "1.16.4",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/numpy"
 }, {
   "name" : "pandas",
-  "version" : ">=0.25.0",
+  "version" : "0.25.0",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/pandas"
 }, {
   "name" : "gym",
-  "version" : ">=0.14.0",
+  "version" : "0.14.0",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/gym"
 }, {
   "name" : "pyyaml",
-  "version" : ">=5.1.2",
+  "version" : "5.1.2",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/pyyaml"
 }, {
   "name" : "sympy",
-  "version" : ">=1.4",
+  "version" : "1.4",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/sympy"
 }, {
   "name" : "tensorflow",
-  "version" : ">=2.1.0",
+  "version" : "2.1.0",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/tensorflow"
 }, {
   "name" : "stochastic",
-  "version" : ">=0.4.0",
+  "version" : "0.4.0",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/stochastic"
 }, {
   "name" : "ccxt",
-  "version" : ">=1.18.1220",
+  "version" : "1.18.1220",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/ccxt"
 }, {
   "name" : "jupyterlab",
-  "version" : ">=1.1.4",
+  "version" : "1.1.4",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/jupyterlab"
 }, {
   "name" : "plotly",
-  "version" : ">=4.5.0",
+  "version" : "4.5.0",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/plotly"
 }, {
   "name" : "numpy",
-  "version" : ">=1.17.0",
+  "version" : "1.17.0",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/numpy"
 }, {
   "name" : "pandas",
-  "version" : ">=0.25.0",
+  "version" : "0.25.0",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/pandas"
 }, {
   "name" : "gym",
-  "version" : ">=0.14.0",
+  "version" : "0.14.0",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/gym"
 }, {
   "name" : "pyyaml",
-  "version" : ">=5.1.2",
+  "version" : "5.1.2",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/pyyaml"
 }, {
   "name" : "stochastic",
-  "version" : "==0.6.0",
+  "version" : "0.6.0",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/stochastic"
 }, {
   "name" : "tensorflow",
-  "version" : ">=2.1.0",
+  "version" : "2.1.0",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/tensorflow"
 }, {
   "name" : "ipython",
-  "version" : ">=7.12.0",
+  "version" : "7.12.0",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/ipython"
 }, {
   "name" : "matplotlib",
-  "version" : ">=3.1.1",
+  "version" : "3.1.1",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/matplotlib"
 }, {
   "name" : "plotly",
-  "version" : ">=4.5.0",
+  "version" : "4.5.0",
   "provider" : "pypi",
   "url" : "https://pypi.org/project/plotly"
 } ]

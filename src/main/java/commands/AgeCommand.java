@@ -1,15 +1,17 @@
 package commands;
 
 import dtos.Dependency;
+import factory.LibraryServiceFactory;
+import services.LibraryService;
 import services.DependencyService;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AgeCommand implements InspectorLibCommand {
 
     private List<String> dependencyFiles;
+    private Map<String, List<Dependency>> mappedDependencies;
 
     @Override
     public boolean parse(String[] args) {
@@ -28,8 +30,16 @@ public class AgeCommand implements InspectorLibCommand {
         DependencyService dependencyService = new DependencyService();
         List<Dependency> dependencies = dependencyService.getDependenciesFromFiles(dependencyFiles);
 
-        for (Dependency s : dependencies) {
-            System.out.println(s);
+        mappedDependencies = dependencies.stream().collect(Collectors.groupingBy(Dependency::getProvider));
+
+        LibraryService libraryService;
+        LibraryServiceFactory libraryServiceFactory = new LibraryServiceFactory();
+
+        for (Map.Entry<String, List<Dependency>> entry : mappedDependencies.entrySet()) {
+            libraryService = libraryServiceFactory.createLibraryService(entry.getKey());
+
+            for (Dependency d : entry.getValue())
+                libraryService.getInformation(d);
         }
     }
 }
