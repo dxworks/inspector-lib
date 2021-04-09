@@ -1,7 +1,9 @@
 package services
 
 import dtos.Dependency
+import dtos.LibraryInformation
 import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
 
 internal class MavenCentralLibraryServiceTest {
     val mavenCentralLibraryService = MavenCentralLibraryService()
@@ -9,9 +11,15 @@ internal class MavenCentralLibraryServiceTest {
     @Test
     internal fun `test maven request for dxworks`() {
 
-        mavenCentralLibraryService.getInformation(Dependency().also {
-            it.name = "junit:junit:3.7"
+        val information = mavenCentralLibraryService.getInformation(Dependency().also {
+            it.name = "junit:junit"
         })
+
+        val expected = LibraryInformation().also {
+            it.name = "junit:junit"
+        }
+
+        assertEquals(expected.name, information?.name)
     }
 }
 

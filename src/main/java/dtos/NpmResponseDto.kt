@@ -10,6 +10,9 @@ class NpmResponseDto : GenericJson() {
     @Key
     var description: String? = null
 
+    @Key("dist-tags")
+    var distTags: Map<String, String>? = emptyMap()
+
     @Key
     var license: String? = null
 

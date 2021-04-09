@@ -17,19 +17,19 @@ class PypiResponseReleasesDto {
     @Key
     var upload_time: String? = null
 
-    @Key
-    var upload_time_iso_8601: String? = null
+    @Key("upload_time_iso_8601")
+    var uploadTimeIso8601: String? = null
 }
 
 class PypiResponseInfoDto {
-    @Key
-    var bugtrack_url: String? = null
+    @Key("bugtrack_url")
+    var bugtrackUrl: String? = null
 
-    @Key
-    var download_url: String? = null
+    @Key("download_url")
+    var downloadUrl: String? = null
 
-    @Key
-    var home_page: String? = null
+    @Key("home_page")
+    var homePage: String? = null
 
     @Key
     var keywords: String? = null
@@ -40,17 +40,17 @@ class PypiResponseInfoDto {
     @Key
     var name: String? = null
 
-    @Key
-    var package_url: String? = null
+    @Key("package_url")
+    var packageUrl: String? = null
 
-    @Key
-    var project_url: String? = null
+    @Key("project_url")
+    var projectUrl: String? = null
 
-    @Key
-    var release_url: String? = null
+    @Key("release_url")
+    var releaseUrl: String? = null
 
-    @Key
-    var requires_dist: List<String>? = emptyList()
+    @Key("requires_dist")
+    var requiresDist: List<String>? = emptyList()
 
     @Key
     var summary: String? = null

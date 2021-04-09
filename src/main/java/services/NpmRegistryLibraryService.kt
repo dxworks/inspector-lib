@@ -2,10 +2,10 @@ package services
 
 import com.google.api.client.http.GenericUrl
 import dtos.Dependency
+import dtos.LibraryInformation
+import dtos.LibraryVersion
 import dtos.NpmResponseDto
-import dtos.NpmResponseVersionDto
 import org.dxworks.utils.java.rest.client.RestClient
-import java.util.*
 
 class NpmRegistryLibraryService : LibraryService, RestClient(NPM_SEARCH_BASE_URL) {
     override fun getInformation(dependency: Dependency): String {
@@ -16,8 +16,14 @@ class NpmRegistryLibraryService : LibraryService, RestClient(NPM_SEARCH_BASE_URL
         dependency.name?.let {
             httpClient.get(GenericUrl(getApiPath(it))).parseAs(NpmResponseDto::class.java)
                 .let { res ->
-                    responseVersions = res.versions
-                    responseTime = res.time
+                    LibraryInformation().apply {
+                        name = res.name
+                        description = res.description
+                        issuesUrl = res.bugs?.url?.let { listOf(it) } ?: emptyList()
+                        licences = res.license?.let { listOf(it) } ?: emptyList()
+                        reposUrl = res.repository?.url?.let { listOf(it) } ?: emptyList()
+                        versions = extractLibraryVersions(res)
+                    }
                 }
         }
 
@@ -45,7 +51,20 @@ class NpmRegistryLibraryService : LibraryService, RestClient(NPM_SEARCH_BASE_URL
         return information
     }
 
+    private fun extractLibraryVersions(res: NpmResponseDto): List<LibraryVersion> {
+        val versions = res.versions
+        val releaseDates = res.time
+
+        return versions.map { (versionId, _) ->
+            LibraryVersion().apply {
+                version = versionId
+                timestamp = releaseDates[versionId]?.let { convertISO8061ToDate(it) }
+                isLatest = versionId == res.distTags?.get("latest")
+            }
+        }
+    }
+
     companion object {
-        private const val NPM_SEARCH_BASE_URL = "http://registry.npmjs.com/"
+        private const val NPM_SEARCH_BASE_URL = "https://registry.npmjs.com/"
     }
 }

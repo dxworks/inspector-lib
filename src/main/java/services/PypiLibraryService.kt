@@ -17,33 +17,46 @@ class PypiLibraryService : LibraryService, RestClient(PYPI_SEARCH_BASE_URL) {
         dependency.name?.let {
             httpClient.get(GenericUrl(getApiPath("$it/json"))).parseAs(PypiResponseDto::class.java)
                 .let { res ->
-                    responseInfo = res.info
-                    responseReleases = res.releases
+//                    val responseInfo = res.info
+//                    val responseReleases = res.releases
+//
+//                    val latestVersion = responseInfo?.version
+//                    val lastDependencyDate =
+//                        responseReleases?.let { it[latestVersion]?.firstOrNull()?.uploadTimeIso8601 }
+//                            ?.let { convertISO8061ToDate(it) }
+//
+//                    val dependencyDate = responseReleases?.let {
+//                        it[dependency.version]?.firstOrNull()?.uploadTimeIso8601?.let {
+//                            convertISO8061ToDate(
+//                                it
+//                            )
+//                        }
+//                    }
+//
+//
+//
+//                    lastDependencyDate
+//                    "${dependency.name},${dependency.version},$dependencyDate,$latestVersion,$lastDependencyDate,${
+//                        differenceBetweenDates(dependencyDate, lastDependencyDate)
+//                    }"
+
+                    LibraryInformation().apply {
+                        name = res.info?.name
+                        description = res.info?.summary
+                        licences = res.info?.license?.let { listOf(it) } ?: emptyList()
+                        reposUrl = res.info?.homePage?.let { listOf(it) } ?: emptyList()
+                        issuesUrl = res.info?.bugtrackUrl?.let { listOf(it) } ?: emptyList()
+                        versions = res.releases.entries.map { (version, versionData) ->
+                            LibraryVersion().also {
+                                it.version = version
+                                it.timestamp = versionData.firstOrNull()?.uploadTimeIso8601
+                                    ?.let { convertISO8061ToDate(it) }
+                                it.isLatest = version == res.info?.version
+                            }
+                        }
+                    }
                 }
         }
-
-        val latestVersion = responseInfo?.version
-        var lastDependencyDate = Date(0)
-
-        var information = ""
-
-        responseReleases?.forEach {
-            if (latestVersion == it.key) {
-                lastDependencyDate = TimeConverterService().convertISO8061ToDate(it.value.first().upload_time_iso_8601)
-            }
-        }
-
-        responseReleases?.forEach {
-            if (dependency.version == it.key) {
-                val dependencyDate = TimeConverterService().convertISO8061ToDate(it.value.first().upload_time_iso_8601)
-                information =
-                    "${dependency.name},${dependency.version},$dependencyDate,$latestVersion,$lastDependencyDate,${
-                        TimeDifferenceService().differenceBetweenDates(dependencyDate, lastDependencyDate)
-                    }"
-            }
-        }
-
-        return information
     }
 
     companion object {

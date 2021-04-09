@@ -1,21 +1,20 @@
 package commands;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import dtos.Dependency;
+import dtos.LibraryInformation;
+import dtos.LibraryVersion;
 import factory.LibraryServiceFactory;
 import me.tongfei.progressbar.ProgressBar;
 import me.tongfei.progressbar.ProgressBarBuilder;
 import me.tongfei.progressbar.ProgressBarStyle;
-import services.LibraryService;
+import services.DateUtilsKt;
 import services.DependencyService;
+import services.LibraryService;
 import services.ResultsFileService;
 
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.sql.SQLOutput;
+import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class AgeCommand implements InspectorLibCommand {
 
@@ -58,13 +57,13 @@ public class AgeCommand implements InspectorLibCommand {
             for (Map.Entry<String, List<Dependency>> entry : mappedDependencies.entrySet()) {
                 libraryService = libraryServiceFactory.createLibraryService(entry.getKey());
 
-                if(libraryService == null) {
+                if (libraryService == null) {
                     System.out.println("Provider " + entry.getKey() + " not supported!");
                     continue;
                 }
 
                 for (Dependency d : entry.getValue()) {
-                    content.add(libraryService.getInformation(d));
+                    content.add(getDependencyAge(Objects.requireNonNull(libraryService.getInformation(d)), d.getVersion()));
                     pb.step();
                 }
             }
@@ -73,5 +72,30 @@ public class AgeCommand implements InspectorLibCommand {
         }
 
         System.out.println("Result file was created successfully!");
+    }
+
+    private String getDependencyAge(LibraryInformation information, String version) {
+        StringBuilder result = new StringBuilder(information.getName() + "," + version + ",");
+        ZonedDateTime currentVersionDate = null;
+        ZonedDateTime latestVersionDate = null;
+
+        for (LibraryVersion v : information.getVersions()) {
+            if (version.equals(v.getVersion())) {
+                result.append(v.getTimestamp()).append(",");
+                currentVersionDate = v.getTimestamp();
+            }
+        }
+
+        for (LibraryVersion v : information.getVersions()) {
+            if (v.isLatest()) {
+                result.append(v.getVersion()).append(",").append(v.getTimestamp()).append(",");
+                latestVersionDate = v.getTimestamp();
+            }
+        }
+
+        if (currentVersionDate != null && latestVersionDate != null)
+            result.append(DateUtilsKt.differenceBetweenDates(currentVersionDate, latestVersionDate));
+
+        return result.toString();
     }
 }
