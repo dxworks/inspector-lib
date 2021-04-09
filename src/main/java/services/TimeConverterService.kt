@@ -13,7 +13,7 @@ class TimeConverterService {
     }
 
     @SneakyThrows
-    fun convertISO_8061ToDate(time: String?): Date {
+    fun convertISO8061ToDate(time: String?): Date {
         val ta = DateTimeFormatter.ISO_INSTANT.parse(time)
         val i = Instant.from(ta)
         return Date.from(i)

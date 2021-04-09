@@ -29,13 +29,13 @@ class PypiLibraryService : LibraryService, RestClient(PYPI_SEARCH_BASE_URL) {
 
         responseReleases?.forEach {
             if (latestVersion == it.key) {
-                lastDependencyDate = TimeConverterService().convertISO_8061ToDate(it.value.first().upload_time_iso_8601)
+                lastDependencyDate = TimeConverterService().convertISO8061ToDate(it.value.first().upload_time_iso_8601)
             }
         }
 
         responseReleases?.forEach {
             if (dependency.version == it.key) {
-                val dependencyDate = TimeConverterService().convertISO_8061ToDate(it.value.first().upload_time_iso_8601)
+                val dependencyDate = TimeConverterService().convertISO8061ToDate(it.value.first().upload_time_iso_8601)
                 information =
                     "${dependency.name},${dependency.version},$dependencyDate,$latestVersion,$lastDependencyDate,${
                         TimeDifferenceService().differenceBetweenDates(dependencyDate, lastDependencyDate)

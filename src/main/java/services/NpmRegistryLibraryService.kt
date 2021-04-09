@@ -28,13 +28,13 @@ class NpmRegistryLibraryService : LibraryService, RestClient(NPM_SEARCH_BASE_URL
 
         responseTime?.forEach {
             if (lastVersion?.key == it.key) {
-                lastDependencyDate = TimeConverterService().convertISO_8061ToDate(it.value)
+                lastDependencyDate = TimeConverterService().convertISO8061ToDate(it.value)
             }
         }
 
         responseTime?.forEach {
             if (it.key == dependency.version) {
-                val dependencyDate = TimeConverterService().convertISO_8061ToDate(it.value)
+                val dependencyDate = TimeConverterService().convertISO8061ToDate(it.value)
                 information =
                     "${dependency.name},${dependency.version},$dependencyDate,${lastVersion?.key},$lastDependencyDate,${
                         TimeDifferenceService().differenceBetweenDates(dependencyDate, lastDependencyDate)
