@@ -1,24 +1,21 @@
-package services;
+package services
 
-import lombok.SneakyThrows;
+import lombok.SneakyThrows
+import java.sql.Timestamp
+import java.time.Instant
+import java.time.format.DateTimeFormatter
+import java.util.*
 
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
-import java.util.Date;
-
-public class TimeConverterService {
-
-    public Date convertTimestampToDate(long timestamp) {
-        Timestamp ts = new Timestamp(timestamp);
-        return new Date(ts.getTime());
+class TimeConverterService {
+    fun convertTimestampToDate(timestamp: Long): Date {
+        val ts = Timestamp(timestamp)
+        return Date(ts.time)
     }
 
     @SneakyThrows
-    public Date convertISO_8061ToDate(String time) {
-        TemporalAccessor ta = DateTimeFormatter.ISO_INSTANT.parse(time);
-        Instant i = Instant.from(ta);
-        return Date.from(i);
+    fun convertISO_8061ToDate(time: String?): Date {
+        val ta = DateTimeFormatter.ISO_INSTANT.parse(time)
+        val i = Instant.from(ta)
+        return Date.from(i)
     }
 }

@@ -8,25 +8,29 @@ import dtos.MavenCentralResponsesDocsDto
 import org.dxworks.utils.java.rest.client.RestClient
 
 class MavenCentralLibraryService : LibraryService, RestClient(MAVEN_SEARCH_BASE_URL) {
-    override fun getInformation(dependency: Dependency) {
+    override fun getInformation(dependency: Dependency): String {
         val (group, artifact) = dependency.name!!.split(":")
 
         var responseDocs: List<MavenCentralResponsesDocsDto>?
+        var information = ""
 
-        httpClient.get(MavenSearchUrl("g:\"$group\" AND a:\"$artifact\"", 100)).parseAs(MavenCentralResponseDto::class.java)
+        httpClient.get(MavenSearchUrl("g:\"$group\" AND a:\"$artifact\"", 100))
+            .parseAs(MavenCentralResponseDto::class.java)
             .let { res ->
                 responseDocs = res.response?.docs
             }
 
-        responseDocs?.forEach{
+        responseDocs?.forEach {
             if (dependency.version == it.v) {
                 val dependencyDate = TimeConverterService().convertTimestampToDate(it.timestamp)
-                println("Dependency ${dependency.name}:${dependency.version} was released on: $dependencyDate")
                 val lastDependencyDate = TimeConverterService().convertTimestampToDate(responseDocs!![0].timestamp)
-                println("The last version is: ${responseDocs!![0].v} and was released on: $lastDependencyDate")
-                println("The time difference between the last version and the currently used version is: ${TimeDifferenceService().differenceBetweenDates(dependencyDate, lastDependencyDate)}")
+                information =
+                    "${dependency.name},${dependency.version},$dependencyDate,${responseDocs!![0].v},$lastDependencyDate,${
+                        TimeDifferenceService().differenceBetweenDates(dependencyDate, lastDependencyDate)}"
             }
         }
+
+        return information
     }
 
     companion object {

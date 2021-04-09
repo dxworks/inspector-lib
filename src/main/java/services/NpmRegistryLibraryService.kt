@@ -8,7 +8,7 @@ import org.dxworks.utils.java.rest.client.RestClient
 import java.util.*
 
 class NpmRegistryLibraryService : LibraryService, RestClient(NPM_SEARCH_BASE_URL) {
-    override fun getInformation(dependency: Dependency) {
+    override fun getInformation(dependency: Dependency): String {
 
         var responseVersions: Map<String, NpmResponseVersionDto>? = null
         var responseTime: Map<String, String>? = null
@@ -22,10 +22,12 @@ class NpmRegistryLibraryService : LibraryService, RestClient(NPM_SEARCH_BASE_URL
         }
 
         val lastVersion = responseVersions?.entries?.last()
-        var lastDependencyDate : Date? = null
+        var lastDependencyDate = Date(0)
+
+        var information = ""
 
         responseTime?.forEach {
-            if(lastVersion?.key == it.key) {
+            if (lastVersion?.key == it.key) {
                 lastDependencyDate = TimeConverterService().convertISO_8061ToDate(it.value)
             }
         }
@@ -33,12 +35,14 @@ class NpmRegistryLibraryService : LibraryService, RestClient(NPM_SEARCH_BASE_URL
         responseTime?.forEach {
             if (it.key == dependency.version) {
                 val dependencyDate = TimeConverterService().convertISO_8061ToDate(it.value)
-                println("Dependency ${dependency.name}:${dependency.version} was released on: $dependencyDate")
-                println("The last version is: ${lastVersion?.key} and was released on: $lastDependencyDate")
-                println("The time difference between the last version and the currently used version is: ${TimeDifferenceService().differenceBetweenDates(dependencyDate, lastDependencyDate)}")
+                information =
+                    "${dependency.name},${dependency.version},$dependencyDate,${lastVersion?.key},$lastDependencyDate,${
+                        TimeDifferenceService().differenceBetweenDates(dependencyDate, lastDependencyDate)
+                    }"
             }
         }
 
+        return information
     }
 
     companion object {

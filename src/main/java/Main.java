@@ -1,9 +1,5 @@
 import commands.AgeCommand;
 import commands.InspectorLibCommand;
-import services.TimeConverterService;
-import services.TimeDifferenceService;
-
-import java.util.Date;
 
 import static commands.InspectorLibCommand.AGE;
 

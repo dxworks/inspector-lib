@@ -9,7 +9,7 @@ import org.dxworks.utils.java.rest.client.RestClient
 import java.util.*
 
 class PypiLibraryService : LibraryService, RestClient(PYPI_SEARCH_BASE_URL) {
-    override fun getInformation(dependency: Dependency) {
+    override fun getInformation(dependency: Dependency): String {
 
         var responseInfo: PypiResponseInfoDto? = null
         var responseReleases: Map<String, List<PypiResponseReleasesDto>>? = null
@@ -22,24 +22,28 @@ class PypiLibraryService : LibraryService, RestClient(PYPI_SEARCH_BASE_URL) {
                 }
         }
 
-        var latestVersion = responseInfo?.version
+        val latestVersion = responseInfo?.version
+        var lastDependencyDate = Date(0)
 
-        var lastDependencyDate : Date? = null
+        var information = ""
 
         responseReleases?.forEach {
-            if(latestVersion == it.key) {
+            if (latestVersion == it.key) {
                 lastDependencyDate = TimeConverterService().convertISO_8061ToDate(it.value.first().upload_time_iso_8601)
             }
         }
 
         responseReleases?.forEach {
-            if(dependency.version == it.key) {
+            if (dependency.version == it.key) {
                 val dependencyDate = TimeConverterService().convertISO_8061ToDate(it.value.first().upload_time_iso_8601)
-                println("Dependency ${dependency.name}:${dependency.version} was released on: $dependencyDate")
-                println("The last version is: $latestVersion and was released on: $lastDependencyDate")
-                println("The time difference between the last version and the currently used version is: ${TimeDifferenceService().differenceBetweenDates(dependencyDate, lastDependencyDate)}")
+                information =
+                    "${dependency.name},${dependency.version},$dependencyDate,$latestVersion,$lastDependencyDate,${
+                        TimeDifferenceService().differenceBetweenDates(dependencyDate, lastDependencyDate)
+                    }"
             }
         }
+
+        return information
     }
 
     companion object {
