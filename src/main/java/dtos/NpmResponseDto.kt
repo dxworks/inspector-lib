@@ -26,10 +26,10 @@ class NpmResponseDto : GenericJson() {
     var bugs: NpmResponseIssueTrackingDto? = null
 
     @Key
-    var versions: Map<String, NpmResponseVersionDto>? = null
+    var versions: Map<String, NpmResponseVersionDto> = emptyMap()
 
     @Key
-    var time: Map<String, String>? = null
+    var time: Map<String, String> = emptyMap()
 
 }
 

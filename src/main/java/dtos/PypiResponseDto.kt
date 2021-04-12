@@ -7,15 +7,15 @@ class PypiResponseDto {
     var info: PypiResponseInfoDto? = null
 
     @Key
-    var releases: Map<String, List<PypiResponseReleasesDto>>? = null
+    var releases: Map<String, List<PypiResponseReleasesDto>> = emptyMap()
 }
 
 class PypiResponseReleasesDto {
     @Key
     var filename: String? = null
 
-    @Key
-    var upload_time: String? = null
+    @Key("upload_time")
+    var uploadTime: String? = null
 
     @Key("upload_time_iso_8601")
     var uploadTimeIso8601: String? = null

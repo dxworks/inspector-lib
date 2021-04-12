@@ -2,19 +2,15 @@ package services
 
 import com.google.api.client.http.GenericUrl
 import dtos.Dependency
+import dtos.LibraryInformation
+import dtos.LibraryVersion
 import dtos.PypiResponseDto
-import dtos.PypiResponseInfoDto
-import dtos.PypiResponseReleasesDto
 import org.dxworks.utils.java.rest.client.RestClient
-import java.util.*
 
 class PypiLibraryService : LibraryService, RestClient(PYPI_SEARCH_BASE_URL) {
-    override fun getInformation(dependency: Dependency): String {
+    override fun getInformation(dependency: Dependency): LibraryInformation? {
 
-        var responseInfo: PypiResponseInfoDto? = null
-        var responseReleases: Map<String, List<PypiResponseReleasesDto>>? = null
-
-        dependency.name?.let {
+        return dependency.name?.let {
             httpClient.get(GenericUrl(getApiPath("$it/json"))).parseAs(PypiResponseDto::class.java)
                 .let { res ->
 //                    val responseInfo = res.info
