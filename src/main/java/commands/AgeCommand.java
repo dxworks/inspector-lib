@@ -10,11 +10,12 @@ import me.tongfei.progressbar.ProgressBarStyle;
 import services.DateUtilsKt;
 import services.DependencyService;
 import services.LibraryService;
-import services.ResultsFileService;
 
 import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static services.ResultsFileServiceKt.writeInResultsFile;
 
 public class AgeCommand implements InspectorLibCommand {
 
@@ -40,7 +41,6 @@ public class AgeCommand implements InspectorLibCommand {
 
         mappedDependencies = dependencies.stream().collect(Collectors.groupingBy(Dependency::getProvider));
 
-        ResultsFileService resultsFileService = new ResultsFileService();
         List<String> content = new ArrayList<>();
 
         LibraryService libraryService;
@@ -63,12 +63,16 @@ public class AgeCommand implements InspectorLibCommand {
                 }
 
                 for (Dependency d : entry.getValue()) {
-                    content.add(getDependencyAge(Objects.requireNonNull(libraryService.getInformation(d)), d.getVersion()));
+                    try {
+                        content.add(getDependencyAge(Objects.requireNonNull(libraryService.getInformation(d)), d.getVersion()));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     pb.step();
                 }
             }
 
-            resultsFileService.writeInResultsFile(content);
+            writeInResultsFile(content);
         }
 
         System.out.println("Result file was created successfully!");

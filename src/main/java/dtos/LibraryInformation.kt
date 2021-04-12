@@ -3,6 +3,7 @@ package dtos
 import java.time.ZonedDateTime
 
 class LibraryInformation {
+    // TODO: add id
     var name: String? = null
     var versions: List<LibraryVersion> = emptyList()
     var reposUrl: List<String> = emptyList()

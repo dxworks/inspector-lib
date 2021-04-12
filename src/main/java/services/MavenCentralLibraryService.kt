@@ -2,8 +2,13 @@ package services
 
 import com.google.api.client.http.GenericUrl
 import com.google.api.client.util.Key
-import dtos.*
+import dtos.Dependency
+import dtos.LibraryInformation
+import dtos.LibraryVersion
+import dtos.MavenCentralResponseDto
+import org.apache.maven.model.io.xpp3.MavenXpp3Reader
 import org.dxworks.utils.java.rest.client.RestClient
+import java.io.StringReader
 
 class MavenCentralLibraryService : LibraryService, RestClient(MAVEN_SEARCH_BASE_URL) {
     override fun getInformation(dependency: Dependency): LibraryInformation? {
@@ -13,15 +18,32 @@ class MavenCentralLibraryService : LibraryService, RestClient(MAVEN_SEARCH_BASE_
             httpClient.get(MavenSearchUrl("g:\"$group\" AND a:\"$artifact\"", 100))
                 .parseAs(MavenCentralResponseDto::class.java)
                 .let { res ->
-//                    val metaData = httpClient.get(GenericUrl("https://search.maven.org/remotecontent?filepath=junit/junit/4.13.2/junit-4.13.2.pom"))
-
-                    LibraryInformation().apply {
-                        name = dependency.name
-                        description = ""
-                        issuesUrl = emptyList()
-                        licences = emptyList()
-                        reposUrl = emptyList()
-                        versions = extractLibraryVersions(res)
+                    val pomUrl = "https://search.maven.org/remotecontent?filepath=${
+                        group.replace(
+                            ".",
+                            "/"
+                        )
+                    }/$artifact/${dependency.version}/$artifact-${dependency.version}.pom"
+                    try {
+                        val metaData =
+                            httpClient.get(GenericUrl(pomUrl))
+                                .parseAsString()
+                        val mavenModel = MavenXpp3Reader().read(StringReader(metaData))
+                        LibraryInformation().apply {
+                            name = "${mavenModel.groupId}:${mavenModel.artifactId}"
+                            description = mavenModel.description?: ""
+                            issuesUrl = mavenModel.issueManagement?.let { listOf(it.url) } ?: emptyList()
+                            licences = mavenModel.licenses.map { it.name }
+                            reposUrl = mavenModel.scm?.let { listOf(it.connection) }?: emptyList()
+                            versions = extractLibraryVersions(res)
+                        }
+                    } catch (e: Exception) {
+                        println("Could not get pom for ${dependency.name} at $pomUrl")
+                        e.printStackTrace()
+                        LibraryInformation().apply {
+                            name = dependency.name
+                            versions = extractLibraryVersions(res)
+                        }
                     }
                 }
         }

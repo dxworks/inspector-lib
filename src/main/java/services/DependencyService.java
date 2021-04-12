@@ -23,10 +23,12 @@ public class DependencyService {
                     if (Files.isDirectory(fileOrFolder)) {
                         return getAllDependencyFilesFromFolder(fileOrFolder);
                     } else return Stream.of(fileOrFolder);
-                }).collect(Collectors.toList());
+                })
+                .collect(Collectors.toList());
 
         return ruleFilePaths.stream()
                 .flatMap(ruleFile -> getDependenciesFromFile(ruleFile).stream())
+                .distinct()
                 .collect(Collectors.toList());
     }
 

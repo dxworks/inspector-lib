@@ -13,6 +13,7 @@ internal class MavenCentralLibraryServiceTest {
 
         val information = mavenCentralLibraryService.getInformation(Dependency().also {
             it.name = "junit:junit"
+            it.version = "4.12"
         })
 
         val expected = LibraryInformation().also {
