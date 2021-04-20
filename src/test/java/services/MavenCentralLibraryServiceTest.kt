@@ -3,6 +3,7 @@ package services
 import dtos.Dependency
 import dtos.LibraryInformation
 import org.junit.jupiter.api.Test
+import services.age.MavenCentralLibraryService
 import kotlin.test.assertEquals
 
 internal class MavenCentralLibraryServiceTest {

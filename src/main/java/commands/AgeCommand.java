@@ -9,13 +9,13 @@ import me.tongfei.progressbar.ProgressBarBuilder;
 import me.tongfei.progressbar.ProgressBarStyle;
 import services.DateUtilsKt;
 import services.DependencyService;
-import services.LibraryService;
+import services.age.LibraryService;
 
 import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static services.ResultsFileServiceKt.writeInResultsFile;
+import static services.ResultsFileServiceKt.writeAgeInResultsFile;
 
 public class AgeCommand implements InspectorLibCommand {
 
@@ -72,7 +72,7 @@ public class AgeCommand implements InspectorLibCommand {
                 }
             }
 
-            writeInResultsFile(content);
+            writeAgeInResultsFile(content);
         }
 
         System.out.println("Result file was created successfully!");

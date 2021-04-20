@@ -1,4 +1,4 @@
-package services
+package services.age
 
 import com.google.api.client.http.GenericUrl
 import dtos.Dependency
@@ -6,6 +6,7 @@ import dtos.LibraryInformation
 import dtos.LibraryVersion
 import dtos.NpmResponseDto
 import org.dxworks.utils.java.rest.client.RestClient
+import services.convertISO8061ToDate
 
 class NpmRegistryLibraryService : LibraryService, RestClient(NPM_SEARCH_BASE_URL) {
     override fun getInformation(dependency: Dependency): LibraryInformation? {

@@ -1,7 +1,9 @@
 import commands.AgeCommand;
 import commands.InspectorLibCommand;
+import commands.VulnerabilityCommand;
 
 import static commands.InspectorLibCommand.AGE;
+import static commands.InspectorLibCommand.VULNERABILITY;
 
 public class Main {
 
@@ -35,6 +37,8 @@ public class Main {
         switch (command) {
             case AGE:
                 return new AgeCommand();
+            case VULNERABILITY:
+                return new VulnerabilityCommand();
             default:
                 return null;
         }

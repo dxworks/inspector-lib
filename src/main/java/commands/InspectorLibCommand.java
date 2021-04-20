@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 public interface InspectorLibCommand {
 
     String AGE = "age";
+    String VULNERABILITY = "vulnerability";
 
     boolean parse(String[] args);
 

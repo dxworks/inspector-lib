@@ -1,9 +1,9 @@
 package factory
 
-import services.LibraryService
-import services.MavenCentralLibraryService
-import services.NpmRegistryLibraryService
-import services.PypiLibraryService
+import services.age.LibraryService
+import services.age.MavenCentralLibraryService
+import services.age.NpmRegistryLibraryService
+import services.age.PypiLibraryService
 
 class LibraryServiceFactory {
     fun createLibraryService(provider: String?): LibraryService? {
