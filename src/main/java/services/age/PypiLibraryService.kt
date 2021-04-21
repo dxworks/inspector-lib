@@ -38,7 +38,8 @@ class PypiLibraryService : LibraryService, RestClient(PYPI_SEARCH_BASE_URL) {
 //                    }"
 
                     LibraryInformation().apply {
-                        name = res.info?.name
+                        project = dependency.project
+                        name = dependency.name
                         description = res.info?.summary
                         licences = res.info?.license?.let { listOf(it) } ?: emptyList()
                         reposUrl = res.info?.homePage?.let { listOf(it) } ?: emptyList()

@@ -20,22 +20,11 @@ class NpmResponseDto : GenericJson() {
     var homepage: String? = null
 
     @Key
-    var repository: NpmResponseRepositoryDto? = null
-
-    @Key
-    var bugs: NpmResponseIssueTrackingDto? = null
-
-    @Key
     var versions: Map<String, NpmResponseVersionDto> = emptyMap()
 
     @Key
     var time: Map<String, String> = emptyMap()
 
-}
-
-class NpmResponseIssueTrackingDto : GenericJson() {
-    @Key
-    var url: String? = null
 }
 
 class NpmResponseVersionDto : GenericJson() {
@@ -47,12 +36,4 @@ class NpmResponseVersionDto : GenericJson() {
 
     @Key("_id")
     var id: String? = null
-}
-
-class NpmResponseRepositoryDto : GenericJson() {
-    @Key
-    var type: String? = null
-
-    @Key
-    var url: String? = null
 }

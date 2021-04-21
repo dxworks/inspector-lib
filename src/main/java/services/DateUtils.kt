@@ -1,9 +1,14 @@
 package services
 
 import java.time.Instant
+import java.time.Period
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+
+
+val DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+
 
 fun convertTimestampToDate(timestamp: Long): ZonedDateTime {
     return ZonedDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault())
@@ -30,4 +35,8 @@ fun differenceBetweenDates(startDate: ZonedDateTime, endDate: ZonedDateTime): St
             + differenceInHours + " hours "
             + differenceInMinutes + " minutes "
             + differenceInSeconds + " seconds")
+}
+
+fun differenceBetweenDatesInMonths(startDate: ZonedDateTime, endDate: ZonedDateTime): Long {
+    return Period.between(startDate.toLocalDate(), endDate.toLocalDate()).toTotalMonths()
 }

@@ -31,7 +31,8 @@ class MavenCentralLibraryService : LibraryService, RestClient(MAVEN_SEARCH_BASE_
                                 .parseAsString()
                         val mavenModel = MavenXpp3Reader().read(StringReader(metaData))
                         LibraryInformation().apply {
-                            name = "${mavenModel.groupId}:${mavenModel.artifactId}"
+                            project = dependency.project
+                            name = "$group:$artifact"
                             description = mavenModel.description?: ""
                             issuesUrl = mavenModel.issueManagement?.let { listOf(it.url) } ?: emptyList()
                             licences = mavenModel.licenses.map { it.name }

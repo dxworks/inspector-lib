@@ -14,11 +14,12 @@ class NpmRegistryLibraryService : LibraryService, RestClient(NPM_SEARCH_BASE_URL
             httpClient.get(GenericUrl(getApiPath(it))).parseAs(NpmResponseDto::class.java)
                 .let { res ->
                     LibraryInformation().apply {
-                        name = res.name
+                        project = dependency.project
+                        name = dependency.name
                         description = res.description
-                        issuesUrl = res.bugs?.url?.let { listOf(it) } ?: emptyList()
+                        issuesUrl = extractIssuesUrl(res)
                         licences = res.license?.let { listOf(it) } ?: emptyList()
-                        reposUrl = res.repository?.url?.let { listOf(it) } ?: emptyList()
+                        reposUrl = extractReposUrl(res)
                         versions = extractLibraryVersions(res)
                     }
                 }
@@ -44,6 +45,34 @@ class NpmRegistryLibraryService : LibraryService, RestClient(NPM_SEARCH_BASE_URL
 //                    }"
 //            }
 //        }
+    }
+
+    private fun extractIssuesUrl(res: NpmResponseDto): List<String> {
+        val bugs = res["bugs"]
+
+        return try {
+            when (bugs) {
+                is String -> listOf(bugs)
+                is Map<*, *> -> listOf((bugs["url"] as String))
+                else -> emptyList()
+            }
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
+    private fun extractReposUrl(res: NpmResponseDto): List<String> {
+        val repos = res["repository"]
+
+        return try {
+            when (repos) {
+                is String -> listOf(repos)
+                is Map<*, *> -> listOf((repos["url"] as String))
+                else -> emptyList()
+            }
+        } catch (e: Exception) {
+            emptyList()
+        }
     }
 
     private fun extractLibraryVersions(res: NpmResponseDto): List<LibraryVersion> {
