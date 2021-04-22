@@ -7,7 +7,7 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 
-val DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+val DATE_FORMATTER = DateTimeFormatter.ofPattern("MMM yyyy")
 
 
 fun convertTimestampToDate(timestamp: Long): ZonedDateTime {

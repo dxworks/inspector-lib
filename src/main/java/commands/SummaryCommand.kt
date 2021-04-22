@@ -19,6 +19,7 @@ class SummaryCommand : InspectorLibCommand() {
     private fun createLicenseFile(dependencies: List<Dependency>) {
         val contentString = dependencies.mapNotNull { it.libraryInformation }
             .flatMap { it.licences }
+            .filterNotNull()
             .map { it.toLowerCase() }
             .distinct()
             .groupingBy { it }

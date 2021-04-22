@@ -41,7 +41,7 @@ class MavenCentralLibraryService : LibraryService, RestClient(MAVEN_SEARCH_BASE_
                         }
                     } catch (e: Exception) {
                         println("Could not get pom for ${dependency.name} at $pomUrl")
-                        e.printStackTrace()
+//                        e.printStackTrace()
                         LibraryInformation().apply {
                             name = dependency.name
                             versions = extractLibraryVersions(res)

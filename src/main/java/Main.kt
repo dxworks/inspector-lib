@@ -35,10 +35,10 @@ fun writeDependenciesByProject(dependencies: List<Dependency>) {
         val resultFile = File("results/lib-summary-by-project.csv")
         resultFile.writeText("Project,Library,")
         val oneDep = dependencies.first()
-        resultFile.writeText(oneDep.data.keys.joinToString(",") { it })
-        resultFile.writeText("\n")
+        resultFile.appendText(oneDep.data.keys.joinToString(",") { it })
+        resultFile.appendText("\n")
 
-        resultFile.writeText(dependencies.joinToString("\n") {
+        resultFile.appendText(dependencies.joinToString("\n") {
             "${it.project},${it.name},${it.data.values.joinToString(",")}"
         })
     }
@@ -49,10 +49,10 @@ fun writeDependencies(dependencies: List<Dependency>) {
         val resultFile = File("results/lib-summary.csv")
         resultFile.writeText("Library,")
         val oneDep = dependencies.first()
-        resultFile.writeText(oneDep.data.keys.joinToString(",") { it })
-        resultFile.writeText("\n")
+        resultFile.appendText(oneDep.data.keys.joinToString(",") { it })
+        resultFile.appendText("\n")
 
-        resultFile.writeText(dependencies.joinToString("\n") {
+        resultFile.appendText(dependencies.joinToString("\n") {
             "${it.name},${it.data.values.joinToString(",")}"
         })
     }
