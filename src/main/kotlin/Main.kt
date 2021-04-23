@@ -18,6 +18,8 @@ fun main(args: Array<String>) {
     }
 
     inspectorLibCommand.execute()
+
+    println("Inspector-Lib finished!")
 }
 
 private fun getInspectorLibCommand(command: String): InspectorLibCommand? {
@@ -25,6 +27,7 @@ private fun getInspectorLibCommand(command: String): InspectorLibCommand? {
         AGE_COMMAND -> AgeCommand()
         VULNERABILITY_COMMAND -> VulnerabilityCommand()
         SUMMARY_COMMAND -> SummaryCommand()
+        HELP_COMMAND -> HelpCommand()
         else -> null
     }
 }

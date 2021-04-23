@@ -1,33 +1,19 @@
 package commands
 
-import dtos.Dependency
-import services.getDependenciesFromFiles
 import java.io.File
 
 const val AGE_COMMAND = "age"
 const val VULNERABILITY_COMMAND = "vulnerability"
 const val SUMMARY_COMMAND = "summary"
+const val HELP_COMMAND = "help"
 
 abstract class InspectorLibCommand {
 
-    var dependencyFiles: List<String> = emptyList()
+    abstract fun parse(args: Array<String>): Boolean
 
-    fun parse(args: Array<String>): Boolean {
-        if (args.size == 1) return false
+    abstract fun execute()
 
-        val files = args.copyOfRange(1, args.size)
-        dependencyFiles = files.filter(this::fileOrFolderExists)
-        return dependencyFiles.isNotEmpty() && files.size == dependencyFiles.size
-    }
-
-    var dependencies: List<Dependency> = emptyList()
-
-    fun execute() {
-        dependencies = getDependenciesFromFiles(dependencyFiles)
-        consumeDependencies(dependencies)
-    }
-
-    abstract fun consumeDependencies(dependencies: List<Dependency>)
+    abstract fun usage(): String
 
     fun fileOrFolderExists(fileOrFolderPath: String): Boolean {
         val file = File(fileOrFolderPath)

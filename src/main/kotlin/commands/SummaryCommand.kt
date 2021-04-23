@@ -3,7 +3,7 @@ package commands
 import dtos.Dependency
 import services.createLicenseFile
 
-class SummaryCommand : InspectorLibCommand() {
+class SummaryCommand : WithFilesCommand() {
 
     private val ageCommand = AgeCommand()
     private val vulnerabilityCommand = VulnerabilityCommand()
@@ -14,4 +14,6 @@ class SummaryCommand : InspectorLibCommand() {
 
         createLicenseFile(dependencies)
     }
+
+    override fun usage(): String ="inspector-lib summary <path_to_file>..."
 }

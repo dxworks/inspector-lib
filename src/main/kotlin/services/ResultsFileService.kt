@@ -13,7 +13,7 @@ fun writeDependenciesByProject(dependencies: List<Dependency>) {
             resultsPath.toFile().mkdirs()
         }
 
-        val resultFile = File("results/lib-summary-by-project.csv")
+        val resultFile = File("results/inspector-lib-result-by-project.csv")
         resultFile.writeText("Project,Library,")
         val oneDep = dependencies.first()
         resultFile.appendText(oneDep.data.keys.joinToString(",") { it })
@@ -32,7 +32,7 @@ fun writeDependencies(dependencies: List<Dependency>) {
             resultsPath.toFile().mkdirs()
         }
 
-        val resultFile = File("results/lib-summary.csv")
+        val resultFile = File("results/inspector-lib-overall-result.csv")
         resultFile.writeText("Library,")
         val oneDep = dependencies.first()
         resultFile.appendText(oneDep.data.keys.joinToString(",") { it })

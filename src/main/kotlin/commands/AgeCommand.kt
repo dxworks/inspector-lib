@@ -11,7 +11,7 @@ import services.age.LibraryService
 import java.time.ZonedDateTime
 import java.util.stream.Collectors
 
-class AgeCommand : InspectorLibCommand() {
+class AgeCommand : WithFilesCommand() {
 
     private var dependenciesByProvider: Map<String, List<Dependency>> = emptyMap()
 
@@ -70,6 +70,8 @@ class AgeCommand : InspectorLibCommand() {
         writeDependencies(dependencies)
         writeDependenciesByProject(dependencies)
     }
+
+    override fun usage(): String = "inspector-lib age <path_to_file>..."
 
     private fun getLibraryInformation(libraryService: LibraryService, d: Dependency): LibraryInformation? =
         try {
