@@ -14,29 +14,6 @@ class PypiLibraryService : LibraryService, RestClient(PYPI_SEARCH_BASE_URL) {
         return dependency.name?.let {
             httpClient.get(GenericUrl(getApiPath("$it/json"))).parseAs(PypiResponseDto::class.java)
                 .let { res ->
-//                    val responseInfo = res.info
-//                    val responseReleases = res.releases
-//
-//                    val latestVersion = responseInfo?.version
-//                    val lastDependencyDate =
-//                        responseReleases?.let { it[latestVersion]?.firstOrNull()?.uploadTimeIso8601 }
-//                            ?.let { convertISO8061ToDate(it) }
-//
-//                    val dependencyDate = responseReleases?.let {
-//                        it[dependency.version]?.firstOrNull()?.uploadTimeIso8601?.let {
-//                            convertISO8061ToDate(
-//                                it
-//                            )
-//                        }
-//                    }
-//
-//
-//
-//                    lastDependencyDate
-//                    "${dependency.name},${dependency.version},$dependencyDate,$latestVersion,$lastDependencyDate,${
-//                        differenceBetweenDates(dependencyDate, lastDependencyDate)
-//                    }"
-
                     LibraryInformation().apply {
                         project = dependency.project
                         name = dependency.name

@@ -24,27 +24,6 @@ class NpmRegistryLibraryService : LibraryService, RestClient(NPM_SEARCH_BASE_URL
                     }
                 }
         }
-
-//        val lastVersion = responseVersions?.entries?.last()
-//        var lastDependencyDate = Date(0)
-//
-//        var information = ""
-//
-//        responseTime?.forEach {
-//            if (lastVersion?.key == it.key) {
-//                lastDependencyDate = convertISO8061ToDate(it.value)
-//            }
-//        }
-//
-//        responseTime?.forEach {
-//            if (it.key == dependency.version) {
-//                val dependencyDate = convertISO8061ToDate(it.value)
-//                information =
-//                    "${dependency.name},${dependency.version},$dependencyDate,${lastVersion?.key},$lastDependencyDate,${
-//                        differenceBetweenDates(dependencyDate, lastDependencyDate)
-//                    }"
-//            }
-//        }
     }
 
     private fun extractIssuesUrl(res: NpmResponseDto): List<String> {

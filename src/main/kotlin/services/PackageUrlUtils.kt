@@ -18,9 +18,9 @@ fun createMavenPackageUrl(dependency: Dependency): String {
 }
 
 fun createNpmPackageUrl(dependency: Dependency): String {
-    return "pkg:npm/${dependency.name?.replace("@","%40")}@${dependency.version}"
+    return "pkg:npm/${dependency.name?.replace("@", "%40")}@${dependency.version}"
 }
 
 fun createPypiPackageUrl(dependency: Dependency): String {
-    return "pkg:pypi/${dependency.name?.replace("@","%40")}@${dependency.version}"
+    return "pkg:pypi/${dependency.name?.replace("@", "%40")}@${dependency.version}"
 }

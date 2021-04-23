@@ -2,7 +2,7 @@ package dtos
 
 import services.createPackageUrl
 
-data class Dependency (
+data class Dependency(
     var project: String? = null,
     var name: String? = null,
     var version: String? = null,
@@ -14,6 +14,7 @@ data class Dependency (
     val data: MutableMap<String, String> = LinkedHashMap()
 
     var libraryInformation: LibraryInformation? = null
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -33,6 +34,4 @@ data class Dependency (
         result = 31 * result + (provider?.hashCode() ?: 0)
         return result
     }
-
-
 }

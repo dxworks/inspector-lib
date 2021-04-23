@@ -6,10 +6,8 @@ import dtos.LibraryVersion
 import factory.createLibraryService
 import me.tongfei.progressbar.ProgressBarBuilder
 import me.tongfei.progressbar.ProgressBarStyle
-import services.DATE_FORMATTER
+import services.*
 import services.age.LibraryService
-import services.differenceBetweenDatesInMonths
-import services.safeLet
 import java.time.ZonedDateTime
 import java.util.stream.Collectors
 
@@ -63,10 +61,14 @@ class AgeCommand : InspectorLibCommand() {
                         }
 
                         pb.step()
-
                     }
                 }
             }
+
+        println("Finished computing age...")
+
+        writeDependencies(dependencies)
+        writeDependenciesByProject(dependencies)
     }
 
     private fun getLibraryInformation(libraryService: LibraryService, d: Dependency): LibraryInformation? =
@@ -74,7 +76,6 @@ class AgeCommand : InspectorLibCommand() {
             libraryService.getInformation(d)
         } catch (e: Exception) {
             println("Could not get Library information for ${d.name} with version ${d.version}")
-            e.printStackTrace()
             null
         }
 

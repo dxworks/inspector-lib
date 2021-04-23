@@ -33,15 +33,14 @@ class MavenCentralLibraryService : LibraryService, RestClient(MAVEN_SEARCH_BASE_
                         LibraryInformation().apply {
                             project = dependency.project
                             name = "$group:$artifact"
-                            description = mavenModel.description?: ""
+                            description = mavenModel.description ?: ""
                             issuesUrl = mavenModel.issueManagement?.let { listOf(it.url) } ?: emptyList()
                             licences = mavenModel.licenses.map { it.name }
-                            reposUrl = mavenModel.scm?.let { listOf(it.connection) }?: emptyList()
+                            reposUrl = mavenModel.scm?.let { listOf(it.connection) } ?: emptyList()
                             versions = extractLibraryVersions(res)
                         }
                     } catch (e: Exception) {
                         println("Could not get pom for ${dependency.name} at $pomUrl")
-//                        e.printStackTrace()
                         LibraryInformation().apply {
                             name = dependency.name
                             versions = extractLibraryVersions(res)
@@ -49,16 +48,6 @@ class MavenCentralLibraryService : LibraryService, RestClient(MAVEN_SEARCH_BASE_
                     }
                 }
         }
-
-//        responseDocs?.forEach {
-//            if (dependency.version == it.v) {
-//                val dependencyDate = convertTimestampToDate(it.timestamp)
-//                val lastDependencyDate = convertTimestampToDate(responseDocs!![0].timestamp)
-//                information ="${dependency.name},${dependency.version},$dependencyDate,${responseDocs!![0].v},$lastDependencyDate,${differenceBetweenDates(dependencyDate, lastDependencyDate)}"
-//            }
-//        }
-//
-//        return information
     }
 
     private fun extractLibraryVersions(res: MavenCentralResponseDto): List<LibraryVersion> {
