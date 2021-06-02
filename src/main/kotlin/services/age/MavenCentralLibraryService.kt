@@ -32,7 +32,7 @@ class MavenCentralLibraryService : LibraryService, RestClient(MAVEN_SEARCH_BASE_
                         val mavenModel = MavenXpp3Reader().read(StringReader(metaData))
                         LibraryInformation().apply {
                             project = dependency.project
-                            name = "$group:$artifact"
+                            name = dependency.name
                             description = mavenModel.description ?: ""
                             issuesUrl = mavenModel.issueManagement?.let { listOf(it.url) } ?: emptyList()
                             licences = mavenModel.licenses.map { it.name }
@@ -42,6 +42,7 @@ class MavenCentralLibraryService : LibraryService, RestClient(MAVEN_SEARCH_BASE_
                     } catch (e: Exception) {
                         println("Could not get pom for ${dependency.name} at $pomUrl")
                         LibraryInformation().apply {
+                            project = dependency.project
                             name = dependency.name
                             versions = extractLibraryVersions(res)
                         }

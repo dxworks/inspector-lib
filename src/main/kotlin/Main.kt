@@ -32,6 +32,7 @@ private fun getInspectorLibCommand(command: String): InspectorLibCommand? {
         AGE_COMMAND -> AgeCommand()
         VULNERABILITY_COMMAND -> VulnerabilityCommand()
         SUMMARY_COMMAND -> SummaryCommand()
+        RULE_COMMAND -> RuleCommand()
         HELP_COMMAND -> HelpCommand()
         else -> null
     }

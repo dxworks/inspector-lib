@@ -3,8 +3,9 @@ package commands
 import java.io.File
 
 const val AGE_COMMAND = "age"
-const val VULNERABILITY_COMMAND = "vulnerability"
+const val VULNERABILITY_COMMAND = "vulnerabilities"
 const val SUMMARY_COMMAND = "summary"
+const val RULE_COMMAND = "rules"
 const val HELP_COMMAND = "help"
 
 abstract class InspectorLibCommand {

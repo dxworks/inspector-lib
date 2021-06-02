@@ -58,6 +58,11 @@ class AgeCommand : WithFilesCommand() {
                                 differenceBetweenDatesInMonths(it, ZonedDateTime.now())
                             }?.toString().orEmpty()
                             d.data["Time to Now (in months)"] = `now - current`
+
+                            val `now - latest` = latestVersionReleaseTime?.let {
+                                differenceBetweenDatesInMonths(it, ZonedDateTime.now())
+                            }?.toString().orEmpty()
+                            d.data["Time between Now and Latest (in months)"] = `now - latest`
                         }
 
                         pb.step()

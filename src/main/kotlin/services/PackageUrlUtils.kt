@@ -11,8 +11,14 @@ fun createPackageUrl(dependency: Dependency): String? {
     }
 }
 
-fun createMavenPackageUrl(dependency: Dependency): String {
+fun createMavenPackageUrl(dependency: Dependency): String? {
     val (group, artifact) = dependency.name!!.split(":")
+
+    if(dependency.version.isNullOrEmpty() || dependency.version!!.contains("@"))
+        return null
+
+    if(group.isEmpty())
+        return "pkg:maven/ /$artifact@${dependency.version}"
 
     return "pkg:maven/$group/$artifact@${dependency.version}"
 }
@@ -21,6 +27,8 @@ fun createNpmPackageUrl(dependency: Dependency): String {
     return "pkg:npm/${dependency.name?.replace("@", "%40")}@${dependency.version}"
 }
 
-fun createPypiPackageUrl(dependency: Dependency): String {
+fun createPypiPackageUrl(dependency: Dependency): String? {
+    if(dependency.version.isNullOrEmpty())
+        return null
     return "pkg:pypi/${dependency.name?.replace("@", "%40")}@${dependency.version}"
 }
