@@ -23,12 +23,22 @@ class RuleCommand : WithFilesCommand() {
                     if(group.isNotEmpty()) {
                         val pattern = ILPattern(group, "substring", listOf("all"))
 
-                        rules.add(Rule(listOf(group), listOf(pattern)))
+                        if(dep.provider.equals("maven") || dep.provider.equals("gradle"))
+                            rules.add(Rule(listOf(group), listOf(pattern), listOf("java")))
+                        if(dep.provider.equals("npm"))
+                            rules.add(Rule(listOf(group), listOf(pattern), listOf("javascript", "typescript")))
+                        if(dep.provider.equals("pypi"))
+                            rules.add(Rule(listOf(group), listOf(pattern), listOf("python")))
                     }
                 } else {
                     val pattern = ILPattern(dep.name!!, "substring", listOf("all"))
 
-                    rules.add(Rule(listOf(dep.name!!), listOf(pattern)))
+                    if(dep.provider.equals("maven") || dep.provider.equals("gradle"))
+                        rules.add(Rule(listOf(dep.name!!), listOf(pattern), listOf("java")))
+                    if(dep.provider.equals("npm"))
+                        rules.add(Rule(listOf(dep.name!!), listOf(pattern), listOf("javascript", "typescript")))
+                    if(dep.provider.equals("pypi"))
+                        rules.add(Rule(listOf(dep.name!!), listOf(pattern), listOf("python")))
                 }
             }
         }
