@@ -82,7 +82,7 @@ class AgeCommand : WithFilesCommand() {
         try {
             libraryService.getInformation(d)
         } catch (e: Exception) {
-            println("Could not get Library information for ${d.name} with version ${d.version}")
+            //println("Could not get Library information for ${d.name} with version ${d.version}")
             null
         }
 
